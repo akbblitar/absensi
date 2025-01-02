@@ -3,8 +3,10 @@ import DashboardLayouts from "../Layouts/DashboardLayouts";
 import LogoutModal from '../Fragmen/LogoutModal';
 import { getUserFromToken } from "../../services/auth.service";
 import { FaUser, FaCalendar, FaClipboard } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardKaryawan = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [stats, setStats] = useState({
         hadir: 20,
@@ -29,7 +31,7 @@ const DashboardKaryawan = () => {
 
     const confirmLogout = () => {
         localStorage.removeItem('token');
-        window.location.href = '/';
+        navigate('/');
     };
 
     return (
