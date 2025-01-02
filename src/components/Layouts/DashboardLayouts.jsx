@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Navbar from "../Fragmen/Navbar";
 import LogoutModal from '../Fragmen/LogoutModal';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardLayouts = ({ user, children, onLogout }) => {
+    const navigate = useNavigate();
     const [showLogoutModal, setShowLogoutModal] = useState(false);
 
     const handleLogout = () => {
@@ -11,7 +13,7 @@ const DashboardLayouts = ({ user, children, onLogout }) => {
 
     const confirmLogout = () => {
         localStorage.removeItem('token');
-        window.location.href = '/';
+        navigate('/');
     };
 
     if (!user) {
